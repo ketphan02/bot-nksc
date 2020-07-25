@@ -23,7 +23,7 @@ function callSendAPI(sender_psid, response)
     request(
     {
         "url": `https://graph.facebook.com/v7.0/me/messages`,
-        "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN },
+        "qs": { "access_token": process.env.ACCESS_TOKEN },
         "method": "POST",
         "json": request_body
     }, (err, res, body) =>
