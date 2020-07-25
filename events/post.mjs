@@ -2,7 +2,9 @@ export default postEvent;
 
 function postEvent(app)
 {
-    const body = req.body;
+    app.post('/', (req, res) =>
+    {
+        const body = req.body;
 
         if (body.object === 'page')
         {
@@ -15,7 +17,7 @@ function postEvent(app)
                 entry.messaging.forEach((event) =>
                 {
                     const sender_id = event.sender.id;
-                    
+
                     if (event.message)
                     {
                         console.log(sender_id, event);
@@ -26,4 +28,5 @@ function postEvent(app)
             res.status(200).send('RECIEVED');
         }
         else res.sendStatus(404);
+    });
 }
