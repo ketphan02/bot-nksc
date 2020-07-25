@@ -4,7 +4,8 @@
   "description": "NKSC auto-forming messenger bot",
   "main": "app.mjs",
   "scripts": {
-    "test": "echo \"i dont do testing\""
+    "test": "echo \"i dont do testing\"",
+    "start": "node app.mjs"
   },
   "repository": {
     "type": "git",
