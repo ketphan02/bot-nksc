@@ -10,6 +10,7 @@ export default webhook;
 
 const app = express();
 const port = process.env.PORT;
+const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 
 function webhook()
 {
