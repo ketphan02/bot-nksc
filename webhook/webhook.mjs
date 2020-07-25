@@ -1,5 +1,5 @@
 import express from 'express';
-import bodyParser, { urlencoded } from 'body-parser';
+import bodyParser from 'body-parser';
 import getEvent from '../events/get.mjs';
 import postEvent from '../events/post.mjs'
 
@@ -10,7 +10,7 @@ const app = express();
 function webhook()
 {
     app.use(bodyParser.json());
-    app.use(urlencoded( { extended: false } ));
+    app.use(express.urlencoded( { extended: false } ));
 
     app.listen(port, () =>
     {
