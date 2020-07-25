@@ -1,3 +1,5 @@
+import callSendAPI from '../features/text.mjs';
+
 export default postEvent;
 
 function postEvent(app)
@@ -20,7 +22,9 @@ function postEvent(app)
 
                     if (event.message)
                     {
-                        console.log(sender_id, event);
+                        const text = event.message.text;
+                        console.log(sender_id, text);
+                        callSendAPI(sender_id, text);
                     }
                 });
             });
