@@ -1,0 +1,24 @@
+{
+  "name": "bot-nksc",
+  "version": "1.0.0",
+  "description": "NKSC auto-forming messenger bot",
+  "main": "app.mjs",
+  "scripts": {
+    "test": "echo \"i dont do testing\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ketphan02/bot-nksc.git"
+  },
+  "author": "PhanKiet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ketphan02/bot-nksc/issues"
+  },
+  "homepage": "https://github.com/ketphan02/bot-nksc#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
