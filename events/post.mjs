@@ -21,26 +21,19 @@ function postEvent(app)
             {
                 entry.messaging.forEach((event) =>
                 {
-                    // const sender_id = event.sender.id;
-                    // if (isAdmin(sender_id))
-                    // {
-                    //     if (event.message && event.message.text.toLowerCase() === "start") isDoing = true;
-                    // }
-                    // else if (isDoing)
-                    // {
-                    //     if (event.message)
-                    //     {
-                    //         const text = event.message.text;
-                    //         console.log(sender_id, text);
-                    //         callSendAPI(sender_id, text);
-                    //     }
-                    // }
-
-                    if (event.message)
+                    const sender_id = event.sender.id;
+                    if (isAdmin(sender_id))
                     {
-                        const text = event.message.text;
-                        console.log(sender_id, text);
-                        callSendAPI(sender_id, text);
+                        if (event.message && event.message.text.toLowerCase() === "start") isDoing = true;
+                    }
+                    else // if (isDoing)
+                    {
+                        if (event.message)
+                        {
+                            const text = event.message.text;
+                            console.log(sender_id, text);
+                            callSendAPI(sender_id, text);
+                        }
                     }
                 });
             });
