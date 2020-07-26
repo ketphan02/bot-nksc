@@ -1,4 +1,5 @@
 import callSendAPI from '../features/text.mjs';
+import isAdmin from '../features/admin.mjs';
 
 export default postEvent;
 
@@ -19,12 +20,15 @@ function postEvent(app)
                 entry.messaging.forEach((event) =>
                 {
                     const sender_id = event.sender.id;
-
-                    if (event.message)
+                    if (isAdmin(sender_id));
+                    else
                     {
-                        const text = event.message.text;
-                        console.log(sender_id, text);
-                        callSendAPI(sender_id, text);
+                        if (event.message)
+                        {
+                            const text = event.message.text;
+                            console.log(sender_id, text);
+                            callSendAPI(sender_id, text);
+                        }
                     }
                 });
             });
