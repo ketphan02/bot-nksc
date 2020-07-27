@@ -31,7 +31,6 @@ function postEvent(app)
                         if (event.message)
                         {
                             const text = event.message.text;
-                            callSendAPI(sender_id, "[BOT]");
                             if (text == "hi") callSendAPI(sender_id, "hello");
                             else if (text == "info") callSendAPI(sender_id, "coded by PhanKiet");
                             else if (text == "help") callSendAPI(sender_id, process.env.MANUAL);
