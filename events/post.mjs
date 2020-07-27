@@ -33,7 +33,7 @@ function postEvent(app)
                             const text = event.message.text;
                             if (text == "hi") callSendAPI(sender_id, "hello");
                             else if (text == "info") callSendAPI(sender_id, "coded by PhanKiet");
-                            else if (text == "help") callSendAPI(sender_id, process.env.MANUAL);
+                            else if (text == "help") callSendAPI(sender_id, 'press "help" for more information\npress "info" to know the author\npress "service" to know your info');
                             else if (text == "service") callSendAPI(sender_id, "your sender id is " + sender_id.toString());
                             else callSendAPI(sender_id, 'type "help" for further instruction');
                         }
