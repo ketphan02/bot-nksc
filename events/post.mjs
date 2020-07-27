@@ -31,8 +31,12 @@ function postEvent(app)
                         if (event.message)
                         {
                             const text = event.message.text;
-                            console.log(sender_id, text);
-                            callSendAPI(sender_id, text);
+                            callSendAPI(sender_id, "[BOT]");
+                            if (text == "hi") callSendAPI(sender_id, "hello");
+                            else if (text == "info") callSendAPI(sender_id, "coded by PhanKiet");
+                            else if (text == "help") callSendAPI(sender_id, process.env.MANUAL);
+                            else if (text == "service") callSendAPI(sender_id, "your sender id is " + sender_id.toString());
+                            else callSendAPI(sender_id, 'type "help" for further instruction');
                         }
                     }
                 });
