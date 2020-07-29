@@ -37,7 +37,7 @@ function curlURL(link)
 {
     return new Promise(() =>
     {
-        const res = request.get(link).httpModule;
+        const res = request.get(link).httpModule.get;
         console.log(res); 
     });
 }
