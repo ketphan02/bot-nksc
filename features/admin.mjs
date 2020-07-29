@@ -41,7 +41,7 @@ async function curlURL(link, sender_id)
         {
             global.isInit = false;
             const first = '<div id="i1" class="freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont" role="heading" aria-level="3">';
-            const second = '</div><div class="freebirdFormviewerComponentsQuestionBaseDescription" id="i2"';
+            const second = '</div><div class="freebirdFormviewerComponentsQuestionBaseDescription" id="';
             try
             {
                 console.log(body.match(new RegExp(first + "(.*)" + second))[1]);
