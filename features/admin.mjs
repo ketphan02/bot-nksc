@@ -43,9 +43,9 @@ async function curlURL(link, sender_id)
             const first = '<div id="i1"';
             const second = '</div><div class="freebirdFormviewerComponentsQuestionBaseDescription"';
 
-            console.log(body.match(new RegExp(first + "(.*)" + second)));
+            console.log(body.match(new RegExp(first + "(.*)" + second))[1]);
             const text = body.match(new RegExp(first + "(.*)" + second));
-            callSendAPI(sender_id, text);
+            callSendAPI(sender_id, text[1]);
         });
     });
 }
