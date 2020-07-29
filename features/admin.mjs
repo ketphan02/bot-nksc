@@ -48,7 +48,7 @@ function curlURL(link)
     {
         const res = request.get(link, (err, res, body) =>
         {
-            console.log(JSON.stringify(body));
+            console.log(typeof body);
             return body;
         });
     });
