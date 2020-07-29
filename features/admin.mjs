@@ -42,10 +42,16 @@ async function curlURL(link, sender_id)
             global.isInit = false;
             const first = '<div id="i1" class="freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont" role="heading" aria-level="3">';
             const second = '</div><div class="freebirdFormviewerComponentsQuestionBaseDescription"';
-
-            console.log(body.match(new RegExp(first + "(.*)" + second))[0]);
-            const text = body.match(new RegExp(first + "(.*)" + second));
-            callSendAPI(sender_id, text[0]);
+            try
+            {
+                console.log(body.match(new RegExp(first + "(.*)" + second))[1]);
+                const text = body.match(new RegExp(first + "(.*)" + second));
+                callSendAPI(sender_id, text[1]);
+            }
+            catch (_)
+            {
+                callSendAPI(sender, "Bạn không được làm admin của cái form lew lew");
+            }
         });
     });
 }
