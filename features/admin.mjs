@@ -3,6 +3,7 @@ dotenv.config();
 
 import callSendAPI from './text.mjs';
 import global from '../global.mjs'
+import fetch from 'node-fetch';
 
 export
 {
@@ -79,7 +80,7 @@ async function adminCommands(event)
                 await Promise.all([
                     callSendAPI(sender_id, "Curling..."),
                     curlURL(link),
-                    Action()
+                    Actions()
                 ]);
             }
             else await callSendAPI(sender_id, "Đây không phải là Google Form, hãy nhập lại.");
