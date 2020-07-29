@@ -1,11 +1,13 @@
-import callSendAPI from '../features/text.mjs';
-import isAdmin from '../features/admin.mjs';
+import { callSendAPI } from '../features/text.mjs';
+import { isAdmin, adminCommands } from '../features/admin.mjs';
+import { isDoing } from '../app.mjs';
 
-export default postEvent;
+export default
+{
+    postEvent
+}
 
-let isDoing = false;
-
-function postEvent(app)
+async function postEvent(app)
 {
     app.post('/', (req, res) =>
     {
@@ -22,20 +24,13 @@ function postEvent(app)
                 entry.messaging.forEach((event) =>
                 {
                     const sender_id = event.sender.id;
-                    if (isAdmin(sender_id))
-                    {
-                        if (event.message && event.message.text.toLowerCase() === "start") isDoing = true;
-                    }
-                    else // if (isDoing)
+                    if (isAdmin(sender_id)) adminCommands(event);
+                    else if (isDoing)
                     {
                         if (event.message)
                         {
                             const text = event.message.text;
-                            if (text == "hi") callSendAPI(sender_id, "hello");
-                            else if (text == "info") callSendAPI(sender_id, "coded by PhanKiet");
-                            else if (text == "help") callSendAPI(sender_id, 'press "help" for more information\npress "info" to know the author\npress "service" to know your info');
-                            else if (text == "service") callSendAPI(sender_id, "your sender id is " + sender_id.toString());
-                            else callSendAPI(sender_id, 'type "help" for further instruction');
+                            await callSendAPI(sender_id, text);
                         }
                     }
                 });

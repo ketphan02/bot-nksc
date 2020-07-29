@@ -1,7 +1,10 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-export default getEvent;
+export default
+{
+    getEvent
+}
 
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 
