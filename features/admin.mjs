@@ -33,9 +33,9 @@ function isGoogleForm(link)
     }
 }
 
-function Actions(body)
+async function Actions(body)
 {
-    console.log(body);
+    console.log("STARTED ACTING");
     return new Promise(() =>
     {
         global.isInit = false;
@@ -50,14 +50,10 @@ async function curlURL(link)
 {
     return new Promise(() =>
     {
-        let res = {};
         request.get(link, (err, res, body) =>
         {
-            console.log(typeof body);
-            res = body;
+            Actions(body);
         });
-        console.log(res);
-        return res;
     });
 }
 
@@ -80,10 +76,7 @@ async function adminCommands(event)
             const link = event.message.text;
             if (isGoogleForm(link))
             {
-                curlURL(link).then((body) =>
-                {
-                    Promise.all([callSendAPI(sender_id, "Curling..."), Actions(body)]);
-                });
+                Promise.all([callSendAPI(sender_id, "Curling..."), curlURL(link)]);
             }
             else await callSendAPI(sender_id, "Đây không phải là Google Form, hãy nhập lại.");
         }
