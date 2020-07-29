@@ -4,6 +4,7 @@ dotenv.config();
 import callSendAPI from './text.mjs';
 import global from '../global.mjs'
 import fetch from 'node-fetch';
+import request from 'request';
 
 export
 {
@@ -36,20 +37,8 @@ function curlURL(link)
 {
     return new Promise(() =>
     {
-        const opt = 
-        {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default'
-        };
-
-
-        fetch(link, opt)
-        .then((result) =>
-        {
-            console.log(result);
-        })
-        .catch((err) => console.log(err));
+        const res = request.get(link);
+        console.log(res); 
     });
 }
 
