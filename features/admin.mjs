@@ -62,9 +62,9 @@ async function curlURL(link, sender_id)
         // console.log(link);
 
         let parser = new DOMParser();
-        let htmlDoc = parser.parseFromString(body, 'text/xml');
+        let htmlDoc = parser.parseFromString(body, 'text/html');
         let script = htmlDoc.getElementsByClassName("freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont");
-        console.log("Script:", script);
+        console.log("Script:", script[1].textContent);
 
     });
 }
