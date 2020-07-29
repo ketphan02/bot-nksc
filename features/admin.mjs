@@ -22,7 +22,7 @@ function isGoogleForm(link)
     try
     {
         new URL(link);
-        if (link.includes("https://docs.google.com/forms/d/")) return true;
+        if (link.includes("docs.google.com/forms/d/")) return true;
         return false;
     }
     catch (e)
