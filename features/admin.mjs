@@ -63,11 +63,7 @@ async function fetchURL(link)
     {
         method: "GET",
         mode: 'cors',
-        cache: 'no-cache',
-        headers:
-        {
-            'Content-Type': 'text/javascript'
-        }
+        cache: 'no-cache'
     };
 
     fetch(link, opt)
