@@ -33,26 +33,17 @@ function isGoogleForm(link)
     }
 }
 
-async function Actions(body)
-{
-    console.log("STARTED ACTING");
-    return new Promise(() =>
-    {
-        global.isInit = false;
-        const first = '<div id=\"i1\" class=\"freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont\"';
-        const second = '</div><div class=\"freebirdFormviewerComponentsQuestionBaseDescription\"';
-
-        console.log(body.match(new RegExp(first + "(.*)" + second)));
-    });
-}
-
 async function curlURL(link)
 {
     return new Promise(() =>
     {
         request.get(link, (err, res, body) =>
         {
-            Actions(body);
+            global.isInit = false;
+            const first = '<div id=\"i1\" class=\"freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont\"';
+            const second = '</div><div class=\"freebirdFormviewerComponentsQuestionBaseDescription\"';
+
+            console.log(body.match(new RegExp(first + "(.*)" + second)));
         });
     });
 }
