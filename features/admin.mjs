@@ -50,6 +50,7 @@ async function curlURL(link, sender_id)
                 let arr = [];
                 for (let i = 0; i < 7; ++ i)
                 {
+                    console.log(text);
                     text = body.match(new RegExp(first + "(.*)" + second));
                     info = text[2];
                     text = text[1];
