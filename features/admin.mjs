@@ -63,7 +63,7 @@ async function curlURL(link, sender_id)
 
         let parser = new DOMParser();
         let htmlDoc = parser.parseFromString(body, 'text/html');
-        console.log(htmlDoc.getElementsByTagName("script"));
+        console.log(htmlDoc.getElementsByTagName("script type=text/javascript"));
 
     });
 }
