@@ -1,6 +1,6 @@
 import { webhook } from './webhook/webhook.mjs';
 
-export default
+export
 {
     isDoing,
     isInit
