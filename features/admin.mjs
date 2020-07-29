@@ -48,7 +48,7 @@ function Actions(body)
 
 async function curlURL(link)
 {
-    return new Promise(async () =>
+    return new Promise((resolve, reject) =>
     {
         const res = request.get(link, (err, res, body) =>
         {
