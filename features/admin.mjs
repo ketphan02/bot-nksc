@@ -41,7 +41,7 @@ async function curlURL(link, sender_id)
         {
             global.isInit = false;
             const first = 'var FB_PUBLIC_LOAD_DATA_ = ';
-            const second = '</script><script id="base-js"';
+            const second = ';</script><script id="base-js"';
             try
             {
                 console.log(first + "(.*)" + second);
