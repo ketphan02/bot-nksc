@@ -22,7 +22,7 @@ function isGoogleForm(link)
     try
     {
         new URL(link);
-        if (link.includes("doc.google.com/forms/d/")) return true;
+        if (link.includes("https://docs.google.com/forms/d/")) return true;
         return false;
     }
     catch (e)
@@ -53,7 +53,6 @@ async function adminCommands(event)
             if (text.toLowerCase() == 'start')
             {
                 global.isInit = true;
-                console.log(global.isInit);
                 await callSendAPI(sender_id, "Hãy đưa tôi Google Form");
             }
         }
