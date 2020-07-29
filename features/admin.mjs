@@ -42,15 +42,9 @@ async function curlURL(link, sender_id)
             global.isInit = false;
             const first = 'var FB_PUBLIC_LOAD_DATA_ = ';
             const second = ';</script><script id="base-js"';
-            try
-            {
-                let text = body.match(new RegExp(first + "(.*)" + second))[1];
-                console.log(text);
-            }
-            catch (_)
-            {
-                callSendAPI(sender, "Bạn không được làm admin của cái form lew lew");
-            }
+            
+            let text = body.match(new RegExp(first + "(.*)" + second))[1];
+            console.log(text);
         });
     });
 }
