@@ -45,8 +45,21 @@ async function curlURL(link, sender_id)
             try
             {
                 console.log(body.match(new RegExp(first + "(.*)" + second))[1]);
-                const text = body.match(new RegExp(first + "(.*)" + second));
-                callSendAPI(sender_id, text[1]);
+                let text = body.match(new RegExp(first + "(.*)" + second))[1];
+                let info = '';
+                let arr = [];
+                for (let i = 0; i < 7; ++ i)
+                {
+                    text = body.match(new RegExp(first + "(.*)" + second));
+                    info = text[2];
+                    text = text[1];
+                    arr.push(info);
+                }
+                
+                for (let i = arr.length - 1; i >= 0; -- i)
+                {
+                    callSendAPI(arr[i]);
+                }
             }
             catch (_)
             {
