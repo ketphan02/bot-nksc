@@ -7,7 +7,7 @@ export default callSendAPI;
 
 function callSendAPI(sender_psid, response)
 {
-    return new Promise((resolve, reject) => {
+    return new Promise(() => {
         const request_body =
         {
             "recipient":

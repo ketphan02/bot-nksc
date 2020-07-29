@@ -33,8 +33,9 @@ function isGoogleForm(link)
 
 function curlURL(link)
 {
-    return new Promise((resolve, reject) =>
+    return new Promise(() =>
     {
+        console.log("BRUHHHHHH");
         fetch(link)
         .then((result) =>
         {
@@ -50,7 +51,10 @@ function curlURL(link)
 
 function Actions()
 {
-    var obj = JSON.parse(res)
+    return new Promise(() =>
+    {
+        console.log("HELLO");
+    })
 }
 
 async function adminCommands(event)
