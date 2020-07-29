@@ -40,31 +40,14 @@ async function curlURL(link, sender_id)
     request.get(link, (err, res, body) =>
     {
         global.isInit = false;
-        // const first = 'var FB_PUBLIC_LOAD_DATA_ = ';
-        // const second = ';</script><script id="base-js" ';
-        // try
-        // {
-        //     let text = body.match(new RegExp(first + "(.*)" + second))[1];
-        //     text = 'var arr = ' + text;
-        //     console.log(text);
-        //     eval(text);
-        // }
-        // catch (_)
-        // {
-        //     console.log(first + "(.*)" + second);
-        //     console.log("FAILED");
-        //     console.log(body);
-        // }
-    
-        // doc = JSON.parse(body);
-        // console.log(doc);
-        // link = doc.select("script").first();
-        // console.log(link);
 
         let parser = new DOMParser();
         let htmlDoc = parser.parseFromString(body, 'text/html');
         let script = htmlDoc.getElementsByClassName("freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont");
-        console.log("Script:", script[1].textContent);
+        for (let i = 0; i < script.length; ++ i)
+        {
+            callSendAPI(sender_id, script[i].textContent);
+        }
 
     });
 }
