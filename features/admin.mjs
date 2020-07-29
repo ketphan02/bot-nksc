@@ -43,8 +43,8 @@ async function curlURL(link)
             const first = '<div id=\\"i1\\" class=\\"freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont\\"';
             const second = '</div><div class=\\"freebirdFormviewerComponentsQuestionBaseDescription\\"';
 
-            console.log(body.match(new RegExp(first + "(.*)" + second)));
-            console.log("IT'S OKAY TO CRY")
+            // console.log(body.match(new RegExp(first + "(.*)" + second)));
+            console.log(first + "(.*)" + second);
         });
     });
 }
