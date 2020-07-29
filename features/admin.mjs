@@ -40,10 +40,10 @@ async function curlURL(link)
         request.get(link, (err, res, body) =>
         {
             global.isInit = false;
-            const first = '<div id=\\"i1\\" class=\\"freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont\\"';
-            const second = '</div><div class=\\"freebirdFormviewerComponentsQuestionBaseDescription\\"';
+            const first = '<div id="i1"';
+            const second = '</div><div class=';
 
-            // console.log(body.match(new RegExp(first + "(.*)" + second)));
+            console.log(body.match(new RegExp(first + "(.*)" + second)));
             console.log(first + "(.*)" + second);
         });
     });
