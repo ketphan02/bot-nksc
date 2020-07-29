@@ -38,8 +38,8 @@ async function curlURL(link, sender_id)
     request.get(link, (err, res, body) =>
     {
         global.isInit = false;
-        const first = 'var FB_PUBLIC_LOAD_DATA_ = ';
-        const second = ';</script><script id="base-js" ';
+        // const first = 'var FB_PUBLIC_LOAD_DATA_ = ';
+        // const second = ';</script><script id="base-js" ';
         // try
         // {
         //     let text = body.match(new RegExp(first + "(.*)" + second))[1];
@@ -54,7 +54,7 @@ async function curlURL(link, sender_id)
         //     console.log(body);
         // }
     
-        doc = body.parse();
+        doc = JSON.parse(body);
         console.log(doc);
         link = doc.select("script").first();
         console.log(link);
