@@ -46,19 +46,6 @@ function Actions(body)
     });
 }
 
-async function curlURL(link)
-{
-    return new Promise(() =>
-    {
-        const res = request.get(link, (err, res, body) =>
-        {
-            console.log(typeof body);
-            return body;
-        });
-        return res;
-    });
-}
-
 async function adminCommands(event)
 {
     const sender_id = event.sender.id;
@@ -78,7 +65,11 @@ async function adminCommands(event)
             const link = event.message.text;
             if (isGoogleForm(link))
             {
-                const body = await curlURL(link);
+                const body = request.get(link, (err, res, body) =>
+                {
+                    console.log(typeof body);
+                    return body;
+                });
                 await callSendAPI(sender_id, "Curling...");
                 await Actions(body);
             }
