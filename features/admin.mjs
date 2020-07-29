@@ -46,7 +46,7 @@ function Actions(body)
     });
 }
 
-function curlURL(link)
+async function curlURL(link)
 {
     return new Promise(async () =>
     {
