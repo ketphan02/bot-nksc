@@ -36,7 +36,6 @@ function curlURL(link)
 {
     return new Promise(() =>
     {
-        console.log("BRUHHHHHH");
         fetch(link)
         .then((result) =>
         {
@@ -55,6 +54,7 @@ function Actions()
     return new Promise(() =>
     {
         console.log("HELLO");
+        global.isInit = false;
     })
 }
 
