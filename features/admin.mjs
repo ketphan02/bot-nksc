@@ -70,7 +70,7 @@ async function fetchURL(link)
     };
 
     fetch(link, opt)
-    .then((res) => console.log(res.headers.values.toString))
+    .then((res) => console.log(res.headers))
     .catch((err) => console.log(err));
 }
 
