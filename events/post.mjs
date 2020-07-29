@@ -1,6 +1,6 @@
 import callSendAPI from '../features/text.mjs';
 import { isAdmin, adminCommands } from '../features/admin.mjs';
-import { isDoing } from '../app.mjs';
+import global from '../global.mjs';
 
 export default postEvent;
 
@@ -22,7 +22,7 @@ function postEvent(app)
                 {
                     const sender_id = event.sender.id;
                     if (isAdmin(sender_id)) adminCommands(event);
-                    else if (isDoing)
+                    else if (global.isDoing)
                     {
                         if (event.message)
                         {

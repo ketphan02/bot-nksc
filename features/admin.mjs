@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import callSendAPI from './text.mjs';
-import { isDoing, isInit } from '../app.mjs'
+import global from '../global.mjs'
 
 export
 {
@@ -47,18 +47,17 @@ async function adminCommands(event)
     const sender_id = event.sender.id;
     if (event.message)
     {
-        if (!isInit)
+        if (!global.isInit)
         {
             const text = event.message.text;
             if (text.toLowerCase() == 'start')
             {
                 await callSendAPI(sender_id, "Hãy đưa tôi Google Form");
-                isInit = true;
+                global.isInit = true;
             }
         }
         else
         {
-            console.log("is init");
             const link = event.message.text;
             if (isGoogleForm(link))
             {
