@@ -25,8 +25,9 @@ function isGoogleForm(link)
         if (link.includes("doc.google.com/forms/d/")) return true;
         return false;
     }
-    catch (_)
+    catch (e)
     {
+        console.log(e);
         return false;  
     }
 }
