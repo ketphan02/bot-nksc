@@ -25,9 +25,8 @@ function isGoogleForm(link)
         if (link.includes("docs.google.com/forms/d/")) return true;
         return false;
     }
-    catch (e)
+    catch (_)
     {
-        console.log(e);
         return false;  
     }
 }
@@ -37,9 +36,21 @@ function curlURL(link)
     return new Promise((resolve, reject) =>
     {
         fetch(link)
-        .then(res => console.log(res))
-        .then(data => console.log(data));
+        .then((result) =>
+        {
+            result.json()
+            .then((data) =>
+            {
+                console.log(data);
+            });
+        })
+        .catch((err) => console.log(err));
     });
+}
+
+function Actions()
+{
+    var obj = JSON.parse(res)
 }
 
 async function adminCommands(event)
@@ -63,6 +74,7 @@ async function adminCommands(event)
             {
                 await callSendAPI(sender_id, "Curling...");
                 await curlURL(link);
+                await Actions();
             }
             else await callSendAPI(sender_id, "Đây không phải là Google Form, hãy nhập lại.");
         }
