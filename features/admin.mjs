@@ -44,7 +44,6 @@ async function curlURL(link, sender_id)
             const second = '</script><script id="base-js"';
             try
             {
-                console.log(body);
                 let text = body.match(new RegExp(first + "(.*)" + second))[1];
                 text = 'var arr = ' + text;
                 console.log(text);
