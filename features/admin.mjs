@@ -36,15 +36,15 @@ function curlURL(link)
 {
     return new Promise(() =>
     {
-        const res = new Request(link,
+        const opt = 
         {
             method: 'GET',
             mode: 'cors',
             cache: 'default'
-        });
+        };
 
 
-        fetch(res)
+        fetch(link, opt)
         .then((result) =>
         {
             console.log(result);
