@@ -58,6 +58,7 @@ async function adminCommands(event)
         }
         else
         {
+            console.log("is init");
             const link = event.message.text;
             if (isGoogleForm(link))
             {
