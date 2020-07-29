@@ -69,7 +69,7 @@ async function fetchURL(link)
         }
     };
 
-    fetch(link)
+    fetch(link, opt)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 }
