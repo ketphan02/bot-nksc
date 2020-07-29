@@ -58,7 +58,19 @@ async function curlURL(link, sender_id)
 
 async function fetchURL(link)
 {
-    
+    const opt = 
+    {
+        method: "GET",
+        mode: 'cors',
+        cache: 'no-cache',
+        headers:
+        {
+            'Content-Type': 'text/javascript'
+        }
+    };
+
+    const res = await fetch(link, opt);
+    console.log(res);
 }
 
 async function adminCommands(event)
