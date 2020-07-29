@@ -35,6 +35,7 @@ function isGoogleForm(link)
 
 function Actions(body)
 {
+    console.log(body);
     return new Promise(() =>
     {
         global.isInit = false;
