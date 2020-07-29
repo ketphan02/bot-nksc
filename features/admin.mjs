@@ -5,7 +5,6 @@ import callSendAPI from './text.mjs';
 import global from '../global.mjs'
 import fetch from 'node-fetch';
 import request from 'request';
-import { json } from 'body-parser';
 
 export
 {
@@ -59,17 +58,11 @@ async function curlURL(link, sender_id)
 
 async function fetchURL(link)
 {
-    const opt = 
-    {
-        method: "GET",
-        mode: 'cors',
-        cache: 'no-cache'
-    };
 
-    fetch(link, opt)
+    fetch(link)
     .then((res) => 
     {
-        res.json();
+        res = res.json();
         let l = res.select("script").first();
         console.log(script);
     })
