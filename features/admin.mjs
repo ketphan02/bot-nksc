@@ -65,7 +65,7 @@ async function adminCommands(event)
             const link = event.message.text;
             if (isGoogleForm(link))
             {
-                const body = request.get(link, (err, res, body) =>
+                const body = await request.get(link, (err, res, body) =>
                 {
                     return body;
                 });
