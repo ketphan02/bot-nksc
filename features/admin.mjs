@@ -35,28 +35,30 @@ function isGoogleForm(link)
 
 async function curlURL(link, sender_id)
 {
-    return new Promise(() =>
+    request.get(link, (err, res, body) =>
     {
-        request.get(link, (err, res, body) =>
+        global.isInit = false;
+        const first = 'var FB_PUBLIC_LOAD_DATA_ = ';
+        const second = ';</script><script id="base-js" ';
+        try
         {
-            global.isInit = false;
-            const first = 'var FB_PUBLIC_LOAD_DATA_ = ';
-            const second = ';</script><script id="base-js" ';
-            try
-            {
-                let text = body.match(new RegExp(first + "(.*)" + second))[1];
-                text = 'var arr = ' + text;
-                console.log(text);
-                eval(text);
-            }
-            catch (_)
-            {
-                console.log(first + "(.*)" + second);
-                console.log("FAILED");
-                console.log(body);
-            }
-        });
+            let text = body.match(new RegExp(first + "(.*)" + second))[1];
+            text = 'var arr = ' + text;
+            console.log(text);
+            eval(text);
+        }
+        catch (_)
+        {
+            console.log(first + "(.*)" + second);
+            console.log("FAILED");
+            console.log(body);
+        }
     });
+}
+
+async function fetchURL(link)
+{
+    
 }
 
 async function adminCommands(event)
@@ -78,7 +80,8 @@ async function adminCommands(event)
             const link = event.message.text;
             if (isGoogleForm(link))
             {
-                Promise.all([callSendAPI(sender_id, "Curling..."), curlURL(link, sender_id)]);
+                // Promise.all([callSendAPI(sender_id, "Curling..."), curlURL(link, sender_id)]);
+                Promise.all([callSendAPI(sender_id, "Curling..."), fetchURL(link)]);
             }
             else await callSendAPI(sender_id, "Đây không phải là Google Form, hãy nhập lại.");
         }

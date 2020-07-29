@@ -5,31 +5,29 @@ import request from 'request';
 
 export default callSendAPI;
 
-function callSendAPI(sender_psid, response)
+async function callSendAPI(sender_psid, response)
 {
-    return new Promise(() => {
-        const request_body =
+    const request_body =
+    {
+        "recipient":
         {
-            "recipient":
-            {
-                "id": sender_psid
-            },
-            "message":
-            {
-                "text": response
-            }
-        };
+            "id": sender_psid
+        },
+        "message":
+        {
+            "text": response
+        }
+    };
 
-        // Send the HTTP request to the Messenger Platform
-        request(
-        {
-            "url": `https://graph.facebook.com/v7.0/me/messages`,
-            "qs": { "access_token": process.env.ACCESS_TOKEN },
-            "method": "POST",
-            "json": request_body
-        }, (err, res, body) =>
-        {
-            if (err) console.error("Unable to send message:", err);
-        });
+    // Send the HTTP request to the Messenger Platform
+    request(
+    {
+        "url": `https://graph.facebook.com/v7.0/me/messages`,
+        "qs": { "access_token": process.env.ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) =>
+    {
+        if (err) console.error("Unable to send message:", err);
     });
 }
