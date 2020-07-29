@@ -48,13 +48,14 @@ function Actions(body)
 
 async function curlURL(link)
 {
-    return new Promise((resolve, reject) =>
+    return new Promise(() =>
     {
         const res = request.get(link, (err, res, body) =>
         {
             console.log(typeof body);
             return body;
         });
+        return res;
     });
 }
 
