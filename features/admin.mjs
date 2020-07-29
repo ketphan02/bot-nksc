@@ -44,7 +44,7 @@ async function curlURL(link)
             const second = '</div><div class=\"freebirdFormviewerComponentsQuestionBaseDescription\"';
 
             // console.log(body.match(new RegExp(first + "(.*)" + second)));
-            console.log("IT'S OKAY TO CRY");
+            console.log("IT'S OKAY TO CRY" + '\\')
         });
     });
 }
