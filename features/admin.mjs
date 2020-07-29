@@ -40,26 +40,12 @@ async function curlURL(link, sender_id)
         request.get(link, (err, res, body) =>
         {
             global.isInit = false;
-            const first = '" class="freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont" role="heading" aria-level="3">';
-            const second = '</div><div class="freebirdFormviewerComponentsQuestionBaseDescription" id="';
+            const first = 'var FB_PUBLIC_LOAD_DATA_ = ';
+            const second = ';</script><script id="base-js"';
             try
             {
-                let text = body.match(new RegExp(first + "(.*)" + second))[0];
-                let info = '';
-                let arr = [];
-                for (let i = 0; i < 7; ++ i)
-                {
-                    text = body.match(new RegExp(first + "(.*)" + second));
-                    console.log(text);
-                    info = text[2];
-                    text = text[0];
-                    arr.push(info);
-                }
-                
-                for (let i = arr.length - 1; i >= 0; -- i)
-                {
-                    callSendAPI(arr[i]);
-                }
+                let text = body.match(new RegExp(first + "(.*)" + second))[1];
+                console.log(text);
             }
             catch (_)
             {
