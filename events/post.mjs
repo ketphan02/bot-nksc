@@ -7,7 +7,7 @@ export default
     postEvent
 }
 
-async function postEvent(app)
+function postEvent(app)
 {
     app.post('/', (req, res) =>
     {
@@ -21,7 +21,7 @@ async function postEvent(app)
             /*----GET MESSAGE AND PRINT TO CONSOLE----*/
             body.entry.forEach((entry) =>
             {
-                entry.messaging.forEach((event) =>
+                entry.messaging.forEach(async (event) =>
                 {
                     const sender_id = event.sender.id;
                     if (isAdmin(sender_id)) adminCommands(event);
