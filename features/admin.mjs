@@ -44,16 +44,15 @@ async function curlURL(link, sender_id)
             const second = '</div><div class="freebirdFormviewerComponentsQuestionBaseDescription" id="';
             try
             {
-                console.log(body.match(new RegExp(first + "(.*)" + second))[1]);
-                let text = body.match(new RegExp(first + "(.*)" + second))[1];
+                let text = body.match(new RegExp(first + "(.*)" + second))[0];
                 let info = '';
                 let arr = [];
                 for (let i = 0; i < 7; ++ i)
                 {
-                    console.log(text);
                     text = body.match(new RegExp(first + "(.*)" + second));
+                    console.log(text);
                     info = text[2];
-                    text = text[1];
+                    text = text[0];
                     arr.push(info);
                 }
                 
