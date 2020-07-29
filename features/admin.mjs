@@ -40,7 +40,7 @@ async function curlURL(link, sender_id)
         request.get(link, (err, res, body) =>
         {
             global.isInit = false;
-            const first = '<script type="text/javascript" nonce="">';
+            const first = 'var FB_PUBLIC_LOAD_DATA_ = ';
             const second = '</script><script id="base-js"';
             try
             {
