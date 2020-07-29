@@ -40,9 +40,9 @@ async function curlURL(link, sender_id)
         request.get(link, (err, res, body) =>
         {
             global.isInit = false;
-            const first = 'var FB_PUBLIC_LOAD_DATA_ = ';
-            const second = ';</script><script id="base-js"';
-            
+            const first = '<script type="text/javascript" nonce="">';
+            const second = '</script><script id="base-js"';
+
             let text = body.match(new RegExp(first + "(.*)" + second))[1];
             console.log(text);
         });
