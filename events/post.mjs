@@ -21,7 +21,11 @@ function postEvent(app)
                 entry.messaging.forEach(async (event) =>
                 {
                     const sender_id = event.sender.id;
-                    if (isAdmin(sender_id)) adminCommands(event);
+                    if (isAdmin(sender_id))
+                    {
+                        console.log(global.isInit);
+                        adminCommands(event);
+                    }
                     else if (global.isDoing)
                     {
                         if (event.message)
