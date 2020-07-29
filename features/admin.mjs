@@ -5,6 +5,8 @@ import callSendAPI from './text.mjs';
 import global from '../global.mjs'
 import fetch from 'node-fetch';
 import request from 'request';
+import DOMParser from 'dom-parser';
+
 
 export
 {
@@ -54,10 +56,14 @@ async function curlURL(link, sender_id)
         //     console.log(body);
         // }
     
-        doc = JSON.parse(body);
-        console.log(doc);
-        link = doc.select("script").first();
-        console.log(link);
+        // doc = JSON.parse(body);
+        // console.log(doc);
+        // link = doc.select("script").first();
+        // console.log(link);
+
+        var parser = new DOMParser();
+        var htmlDoc = parser.parseFromString(body, 'text/html');
+        console.log(htmlDoc);
 
     });
 }
