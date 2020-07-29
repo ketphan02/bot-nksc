@@ -61,8 +61,8 @@ async function curlURL(link, sender_id)
         // link = doc.select("script").first();
         // console.log(link);
 
-        var parser = new DOMParser();
-        var htmlDoc = parser.parseFromString(body, 'text/html');
+        let parser = new DOMParser();
+        let htmlDoc = parser.parseFromString(body, 'text/javascript');
         console.log(htmlDoc);
 
     });
