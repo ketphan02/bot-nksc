@@ -67,4 +67,5 @@ async function adminCommands(event)
             else await callSendAPI(sender_id, "Đây không phải là Google Form, hãy nhập lại.");
         }
     }
+    else console.log("not a message type");
 }
