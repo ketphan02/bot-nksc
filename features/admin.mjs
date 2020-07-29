@@ -33,7 +33,7 @@ function isGoogleForm(link)
     }
 }
 
-async function curlURL(link)
+async function curlURL(link, sender_id)
 {
     return new Promise(() =>
     {
@@ -41,10 +41,11 @@ async function curlURL(link)
         {
             global.isInit = false;
             const first = '<div id="i1"';
-            const second = '</div><div class="freebirdFormviewerComponentsQuestionBaseDescription" id="i2"';
+            const second = '</div><div class="freebirdFormviewerComponentsQuestionBaseDescription"';
 
-            console.log(body.match(new RegExp(first + "(.*)" + second)));
-            console.log(first + "(.*)" + second);
+            // console.log(body.match(new RegExp(first + "(.*)" + second)));
+            const text = body.match(new RegExp(first + "(.*)" + second));
+            callSendAPI(sender_id, text);
         });
     });
 }
@@ -68,7 +69,7 @@ async function adminCommands(event)
             const link = event.message.text;
             if (isGoogleForm(link))
             {
-                Promise.all([callSendAPI(sender_id, "Curling..."), curlURL(link)]);
+                Promise.all([callSendAPI(sender_id, "Curling..."), curlURL(link, sender_id)]);
             }
             else await callSendAPI(sender_id, "Đây không phải là Google Form, hãy nhập lại.");
         }
