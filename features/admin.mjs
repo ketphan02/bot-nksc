@@ -52,7 +52,7 @@ async function adminCommands(event)
             const text = event.message.text;
             if (text.toLowerCase() == 'start')
             {
-                global.isInit = tmp;
+                global.isInit = true;
                 console.log(global.isInit);
                 await callSendAPI(sender_id, "Hãy đưa tôi Google Form");
             }
