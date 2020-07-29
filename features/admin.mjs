@@ -51,7 +51,7 @@ async function curlURL(link)
     return new Promise(() =>
     {
         let res = {};
-        const res = request.get(link, (err, res, body) =>
+        request.get(link, (err, res, body) =>
         {
             console.log(typeof body);
             res = body;
