@@ -76,9 +76,11 @@ async function adminCommands(event)
             const link = event.message.text;
             if (isGoogleForm(link))
             {
-                await callSendAPI(sender_id, "Curling...");
-                await curlURL(link);
-                await Actions();
+                await Promise.all([
+                    callSendAPI(sender_id, "Curling..."),
+                    curlURL(link),
+                    Action()
+                ]);
             }
             else await callSendAPI(sender_id, "Đây không phải là Google Form, hãy nhập lại.");
         }
