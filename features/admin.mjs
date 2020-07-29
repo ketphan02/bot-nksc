@@ -53,7 +53,7 @@ async function curlURL(link)
         const res = request.get(link, (err, res, body) =>
         {
             console.log(typeof body);
-            await Actions(body);
+            return body;
         });
     });
 }
@@ -77,9 +77,10 @@ async function adminCommands(event)
             const link = event.message.text;
             if (isGoogleForm(link))
             {
-                await Promise.all([
+                const [_, body, _] = await Promise.all([
                     callSendAPI(sender_id, "Curling..."),
-                    curlURL(link)
+                    curlURL(link),
+                    Actions(body)
                 ]);
             }
             else await callSendAPI(sender_id, "Đây không phải là Google Form, hãy nhập lại.");
