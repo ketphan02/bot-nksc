@@ -33,24 +33,25 @@ function isGoogleForm(link)
     }
 }
 
-function curlURL(link)
-{
-    return new Promise(() =>
-    {
-        const res = request.get(link, (err, res, body) =>
-        {
-            console.log(body);
-        });
-    });
-}
-
-function Actions()
+function Actions(body)
 {
     return new Promise(() =>
     {
         console.log("HELLO");
         global.isInit = false;
     })
+}
+
+function curlURL(link)
+{
+    return new Promise(async () =>
+    {
+        const res = request.get(link, (err, res, body) =>
+        {
+            console.log(JSON.stringify(body));
+            await Actions(body);
+        });
+    });
 }
 
 async function adminCommands(event)
@@ -74,8 +75,7 @@ async function adminCommands(event)
             {
                 await Promise.all([
                     callSendAPI(sender_id, "Curling..."),
-                    curlURL(link),
-                    Actions()
+                    curlURL(link)
                 ]);
             }
             else await callSendAPI(sender_id, "Đây không phải là Google Form, hãy nhập lại.");
