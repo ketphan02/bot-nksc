@@ -39,11 +39,7 @@ function curlURL(link)
         fetch(link)
         .then((result) =>
         {
-            result.json()
-            .then((data) =>
-            {
-                console.log(data);
-            });
+            console.log(result);
         })
         .catch((err) => console.log(err));
     });
