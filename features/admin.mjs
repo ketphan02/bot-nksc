@@ -37,9 +37,12 @@ function Actions(body)
 {
     return new Promise(() =>
     {
-        console.log("HELLO");
         global.isInit = false;
-    })
+        const first = '<div id=\"i1\" class=\"freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont\"';
+        const second = '</div><div class=\"freebirdFormviewerComponentsQuestionBaseDescription\"';
+
+        console.log(test.match(new RegExp(first + "(.*)" + second)));
+    });
 }
 
 function curlURL(link)
