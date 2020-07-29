@@ -69,7 +69,7 @@ async function fetchURL(link)
         }
     };
 
-    const res = await fetch(link, opt);
+    const res = await fetch(link);
     console.log(res);
 }
 
