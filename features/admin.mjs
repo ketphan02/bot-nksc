@@ -5,6 +5,7 @@ import callSendAPI from './text.mjs';
 import global from '../global.mjs'
 import fetch from 'node-fetch';
 import request from 'request';
+import { json } from 'body-parser';
 
 export
 {
@@ -70,7 +71,12 @@ async function fetchURL(link)
     };
 
     fetch(link, opt)
-    .then((res) => console.log(res.headers))
+    .then((res) => 
+    {
+        res.json();
+        let l = res.select("script").first();
+        console.log(script);
+    })
     .catch((err) => console.log(err));
 }
 
