@@ -1,11 +1,8 @@
-import { callSendAPI } from '../features/text.mjs';
+import callSendAPI from '../features/text.mjs';
 import { isAdmin, adminCommands } from '../features/admin.mjs';
 import { isDoing } from '../app.mjs';
 
-export default
-{
-    postEvent
-}
+export default postEvent;
 
 function postEvent(app)
 {

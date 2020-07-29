@@ -1,10 +1,10 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import { callSendAPI } from './text.mjs';
+import callSendAPI from './text.mjs';
 import { isDoing, isInit } from '../app.mjs'
 
-export default
+export
 {
     isAdmin,
     adminCommands

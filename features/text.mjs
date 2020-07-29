@@ -3,10 +3,7 @@ dotenv.config();
 
 import request from 'request';
 
-export default
-{
-    callSendAPI
-}
+export default callSendAPI;
 
 function callSendAPI(sender_psid, response)
 {

@@ -1,4 +1,4 @@
-import { webhook } from './webhook/webhook.mjs';
+import webhook from './webhook/webhook.mjs';
 
 export
 {

@@ -3,13 +3,10 @@ dotenv.config();
 
 import express from 'express';
 import bodyParser from 'body-parser';
-import { getEvent } from '../events/get.mjs';
-import { postEvent } from '../events/post.mjs'
+import getEvent from '../events/get.mjs';
+import postEvent from '../events/post.mjs'
 
-export default
-{
-    webhook
-}
+export default  webhook;
 
 const app = express();
 const port = process.env.PORT;
