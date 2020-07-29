@@ -43,9 +43,9 @@ async function curlURL(link, sender_id)
             const first = '<div id="i1" class="freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont" role="heading" aria-level="3">';
             const second = '</div><div class="freebirdFormviewerComponentsQuestionBaseDescription"';
 
-            console.log(body.match(new RegExp(first + "(.*)" + second))[1]);
+            console.log(body.match(new RegExp(first + "(.*)" + second))[0]);
             const text = body.match(new RegExp(first + "(.*)" + second));
-            callSendAPI(sender_id, text[1]);
+            callSendAPI(sender_id, text[0]);
         });
     });
 }
