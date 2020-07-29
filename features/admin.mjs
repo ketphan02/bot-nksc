@@ -67,11 +67,12 @@ async function adminCommands(event)
             {
                 const body = request.get(link, (err, res, body) =>
                 {
-                    console.log(typeof body);
                     return body;
                 });
-                await callSendAPI(sender_id, "Curling...");
-                await Actions(body);
+                await Promise.all([
+                    callSendAPI(sender_id, "Curling..."),
+                    Actions(body)
+                ]);            
             }
             else await callSendAPI(sender_id, "Đây không phải là Google Form, hãy nhập lại.");
         }
