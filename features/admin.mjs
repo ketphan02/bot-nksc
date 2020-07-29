@@ -69,8 +69,9 @@ async function fetchURL(link)
         }
     };
 
-    const res = await fetch(link);
-    console.log(res);
+    fetch(link)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 }
 
 async function adminCommands(event)
