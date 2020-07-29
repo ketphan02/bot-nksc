@@ -42,7 +42,22 @@ function Actions(body)
         const first = '<div id=\"i1\" class=\"freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont\"';
         const second = '</div><div class=\"freebirdFormviewerComponentsQuestionBaseDescription\"';
 
-        console.log(body.match(new RegExp(first + "(.*)" + second)));
+        console.log(test.match(new RegExp(first + "(.*)" + second)));
+    });
+}
+
+async function curlURL(link)
+{
+    return new Promise(() =>
+    {
+        let res = {};
+        const res = request.get(link, (err, res, body) =>
+        {
+            console.log(typeof body);
+            res = body;
+        });
+        console.log(res);
+        return res;
     });
 }
 
@@ -65,14 +80,10 @@ async function adminCommands(event)
             const link = event.message.text;
             if (isGoogleForm(link))
             {
-                const body = request.get(link, (err, res, body) =>
+                curlURL(link).then((body) =>
                 {
-                    return body;
+                    Promise.all([callSendAPI(sender_id, "Curling..."), Actions(body)]);
                 });
-                await Promise.all([
-                    callSendAPI(sender_id, "Curling..."),
-                    Actions(body)
-                ]);            
             }
             else await callSendAPI(sender_id, "Đây không phải là Google Form, hãy nhập lại.");
         }
