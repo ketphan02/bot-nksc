@@ -77,9 +77,9 @@ async function adminCommands(event)
             const link = event.message.text;
             if (isGoogleForm(link))
             {
-                const [_, body, _] = await Promise.all([
+                const body = await curlURL(link);
+                await Promise.all([
                     callSendAPI(sender_id, "Curling..."),
-                    curlURL(link),
                     Actions(body)
                 ]);
             }
