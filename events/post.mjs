@@ -23,7 +23,6 @@ function postEvent(app)
                     const sender_id = event.sender.id;
                     if (isAdmin(sender_id))
                     {
-                        console.log(global.isInit);
                         adminCommands(event);
                     }
                     else if (global.isDoing)
