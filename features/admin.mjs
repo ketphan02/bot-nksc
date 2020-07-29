@@ -42,9 +42,17 @@ async function curlURL(link, sender_id)
             global.isInit = false;
             const first = '<script type="text/javascript" nonce="">';
             const second = '</script><script id="base-js"';
-
-            let text = body.match(new RegExp(first + "(.*)" + second))[1];
-            console.log(text);
+            try
+            {
+                console.log(body);
+                let text = body.match(new RegExp(first + "(.*)" + second))[1];
+                console.log(text);
+                eval(text);
+            }
+            catch (_)
+            {
+                console.log("FAILED");
+            }
         });
     });
 }
