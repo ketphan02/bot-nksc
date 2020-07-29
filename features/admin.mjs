@@ -63,8 +63,7 @@ async function fetchURL(link)
     .then((res) => 
     {
         res = res.json();
-        let l = res.select("script").first();
-        console.log(script);
+        console.log(res);
     })
     .catch((err) => console.log(err));
 }
