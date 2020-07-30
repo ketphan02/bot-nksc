@@ -23,7 +23,7 @@ async function usersCommands(event)
     if (event.message)
     {
         const msg = event.message.text;
-        let index = global.arr_usr.find(x => x.id == sender_id);
+        let index = global.arr_usr.findIndex(x => x.id == sender_id);
         if (msg.toLowerCase() == "[start]" || msg.toLowerCase() == "[bắt đầu]")
         {
             if (index) callSendAPI(sender_id, "Bạn đã sử dụng lệnh này. Dùng lệnh [restart] hoặc [bắt đầu lại] để làm lại");
@@ -32,7 +32,7 @@ async function usersCommands(event)
                 let tmp = { id: sender_id, ans: [] };
                 global.arr_usr.push(tmp);
                 console.log(global.arr_usr);
-                index = global.arr_usr.find(x => x.id == sender_id);
+                index = global.arr_usr.findIndex(x => x.id == sender_id);
                 console.log(global.arr_usr, index);
                 await Promise.all([
                     callSendAPI(sender_id, "Đang bắt đầu..."),
