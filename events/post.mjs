@@ -27,11 +27,7 @@ function postEvent(app)
                     }
                     else if (global.isDoing)
                     {
-                        if (event.message)
-                        {
-                            const text = event.message.text;
-                            await callSendAPI(sender_id, text);
-                        }
+                        usersCommands(event);
                     }
                 });
             });

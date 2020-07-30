@@ -2,11 +2,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import callSendAPI from './text.mjs';
-import global from '../global.mjs'
-import fetch from 'node-fetch';
+import global from '../global.mjs';
 import request from 'request';
 import DOMParser from 'dom-parser';
-
 
 export
 {
@@ -44,7 +42,11 @@ async function curlURL(link, sender_id)
         let parser = new DOMParser();
         let htmlDoc = parser.parseFromString(body, 'text/html');
         let script = htmlDoc.getElementsByClassName("freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont");
-        for (let i = 0; i < script.length; ++ i)
+        
+        global.questNum = script.length;
+        global.isDoing = true;
+        
+        for (let i = 0; i < global.questNum; ++ i)
         {
             callSendAPI(sender_id, script[i].textContent);
         }
