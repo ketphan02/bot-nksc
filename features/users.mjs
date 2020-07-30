@@ -5,7 +5,8 @@ export default usersCommands;
 
 async function start_survey(index, msg)
 {
-    global.arr_usr[index].ans.push(msg);
+    if (msg === "[start]" || msg === "[bắt đầu]") ;
+    else global.arr_usr[index].ans.push(msg);
     console.log(global.arr_usr[index]);
     if (global.arr_ques.length === global.arr_usr[index].ans.length)
     {
@@ -28,12 +29,13 @@ async function usersCommands(event)
     {
         const msg = event.message.text;
         let index = global.arr_usr.findIndex(x => x.id == sender_id);
+        console.log(index);
         if (msg.toLowerCase() == "[start]" || msg.toLowerCase() == "[bắt đầu]")
         {
             if (index >= 0)
             {
                 console.log(index);
-                callSendAPI(sender_id, "Bạn đã sử dụng lệnh này. Dùng lệnh [restart] hoặc [bắt đầu lại] để làm lại");
+                await callSendAPI(sender_id, "Bạn đã sử dụng lệnh này. Dùng lệnh [restart] hoặc [bắt đầu lại] để làm lại");
             }
             else
             {
@@ -51,10 +53,10 @@ async function usersCommands(event)
             global.arr_usr[index].ans = [];
             await Promise.all([
                 callSendAPI(sender_id, "Đang xóa sạch câu trả lời cũ"),
-                start_survey(index, msg)
+                start_survey(index, msg.toLowerCase())
             ]);
         }
-        else if (index)
+        else if (index >= 0)
         {
             await start_survey(index, msg);
         }
