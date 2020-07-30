@@ -13,7 +13,8 @@ async function start_survey(index, sender_id, msg)
     }
     else
     {
-        const k = global.arr_usr[index].ans.length;
+        console.log("HELLO");
+        const k = global.arr_usr[index].ans.length - 1;
         await callSendAPI(sender_id, global.arr_ques[k]);
     }
 }
