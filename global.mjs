@@ -9,5 +9,6 @@ export default
     isDoing,
     isInit,
     questNum,
-    arr_usr
+    arr_usr,
+    arr_ques
 }
