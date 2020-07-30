@@ -16,8 +16,8 @@ async function start_survey(index, msg)
         console.log("HELLO");
         const k = global.arr_usr[index].ans.length - 1;
         console.log(k);
-        console.log(global.arr_usr[index].id, global.arr_ques[k]);
-        await callSendAPI(global.arr_usr[index].id, global.arr_ques[k]);
+        console.log(global.arr_usr[index].id, global.arr_ques[k].textContent);
+        await callSendAPI(global.arr_usr[index].id, global.arr_ques[k].textContent);
     }
 }
 
