@@ -12,6 +12,7 @@ function usersCommands(event)
         {
             let tmp = { sender_id: 0 };
             Object.assign(global.arr_usr, tmp);
+            console.log(global.arr_usr);
         }
     }
 }
