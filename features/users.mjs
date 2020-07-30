@@ -10,6 +10,7 @@ function usersCommands(event)
         const msg = event.message.text;
         if (msg.toLowerCase() == "start" || msg.toLowerCase() == "bắt đầu")
         {
+            console.log("HIII");
             let tmp = { sender_id: 0 };
             Object.assign(global.arr_usr, tmp);
             console.log(global.arr_usr);
