@@ -17,7 +17,7 @@ async function start_survey(index, sender_id, msg)
     }
 }
 
-function usersCommands(event)
+async function usersCommands(event)
 {
     const sender_id = event.sender.id;
     if (event.message)
