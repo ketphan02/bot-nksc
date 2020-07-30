@@ -1,6 +1,7 @@
 import callSendAPI from '../features/text.mjs';
 import { isAdmin, adminCommands } from '../features/admin.mjs';
 import global from '../global.mjs';
+import usersCommands from '../features/users.mjs';
 
 export default postEvent;
 
