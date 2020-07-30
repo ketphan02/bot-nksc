@@ -11,8 +11,8 @@ function usersCommands(event)
         if (msg.toLowerCase() == "start" || msg.toLowerCase() == "bắt đầu")
         {
             console.log("HIII");
-            let tmp = { sender_id: 0 };
-            Object.assign(global.arr_usr, tmp);
+            let tmp = { id: sender_id, ques: 0 };
+            global.arr_usr.push(tmp);
             console.log(global.arr_usr);
         }
     }
