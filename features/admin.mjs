@@ -49,6 +49,7 @@ async function curlURL(link, sender_id)
         for (let i = 0; i < global.questNum; ++ i)
         {
             callSendAPI(sender_id, script[i].textContent);
+            global.arr_ques.push(script[i]);
         }
 
     });
