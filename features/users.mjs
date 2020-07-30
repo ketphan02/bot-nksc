@@ -26,17 +26,16 @@ function usersCommands(event)
         const index = global.arr_usr.find(x => x.id == semder_id);
         if (msg.toLowerCase() == "[start]" || msg.toLowerCase() == "[bắt đầu]")
         {
-            if (index)
+            if (index) callSendAPI(sender_id, "Bạn đã sử dụng lệnh này. Dùng lệnh [restart] hoặc [bắt đầu lại] để làm lại");
+            else
             {
-                callSendAPI(sender_id, "Bạn đã sử dụng lệnh này. Dùng lệnh [restart] hoặc [bắt đầu lại] để làm lại");
-                continue;
+                let tmp = { id: sender_id, ans: [] };
+                global.arr_usr.push(tmp);
+                await Promise.all([
+                    callSendAPI(sender_id, "Đang bắt đầu..."),
+                    start_survey(index, sender_id, msg)
+                ]);
             }
-            let tmp = { id: sender_id, ans: [] };
-            global.arr_usr.push(tmp);
-            await Promise.all([
-                callSendAPI(sender_id, "Đang bắt đầu..."),
-                start_survey(index, sender_id, msg)
-            ]);
         }
         else if (msg.toLowerCase() == "[restart]" || msg.toLowerCase() == "[bắt đầu lại]")
         {
