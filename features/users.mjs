@@ -31,8 +31,13 @@ async function usersCommands(event)
             {
                 let tmp = { id: sender_id, ans: [] };
                 global.arr_usr.push(tmp);
+                console.log(global.arr_usr);
                 index = global.arr_usr.find(x => x.id == sender_id);
-                await callSendAPI(sender_id, "Đang bắt đầu...");
+                console.log(global.arr_usr, index);
+                await Promise.all([
+                    callSendAPI(sender_id, "Đang bắt đầu..."),
+                    start_survey(index, sender_id, msg)
+                ]);
             }
         }
         else if (msg.toLowerCase() == "[restart]" || msg.toLowerCase() == "[bắt đầu lại]")
