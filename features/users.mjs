@@ -9,13 +9,15 @@ async function start_survey(index, msg)
     console.log(global.arr_usr[index]);
     if (global.arr_ques.length === global.arr_usr[index].ans.length)
     {
-        callSendAPI(global.arr_usr[index].id, "Cảm ơn bạn vì đã dành thời gian tham gia khảo sát này.");
+        await callSendAPI(global.arr_usr[index].id, "Cảm ơn bạn vì đã dành thời gian tham gia khảo sát này.");
     }
     else
     {
         console.log("HELLO");
         const k = global.arr_usr[index].ans.length - 1;
-        callSendAPI(global.arr_usr[index].id, global.arr_ques[k]);
+        console.log(k);
+        console.log(global.arr_usr[index].id, global.arr_ques[k]);
+        await callSendAPI(global.arr_usr[index].id, global.arr_ques[k]);
     }
 }
 
