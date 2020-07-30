@@ -3,19 +3,19 @@ import callSendAPI from './text.mjs';
 
 export default usersCommands;
 
-async function start_survey(index, sender_id, msg)
+async function start_survey(index, msg)
 {
     global.arr_usr[index].ans.push(msg);
     console.log(global.arr_usr[index]);
     if (global.arr_ques.length === global.arr_usr[index].ans.length)
     {
-        await callSendAPI(sender_id, "Cảm ơn bạn vì đã dành thời gian tham gia khảo sát này.");
+        callSendAPI(global.arr_usr[index].id, "Cảm ơn bạn vì đã dành thời gian tham gia khảo sát này.");
     }
     else
     {
         console.log("HELLO");
         const k = global.arr_usr[index].ans.length - 1;
-        await callSendAPI(sender_id, global.arr_ques[k]);
+        callSendAPI(global.arr_usr[index].id, global.arr_ques[k]);
     }
 }
 
@@ -40,7 +40,7 @@ async function usersCommands(event)
                 index = global.arr_usr.findIndex(x => x.id == sender_id);
                 await Promise.all([
                     callSendAPI(sender_id, "Đang bắt đầu..."),
-                    start_survey(index, sender_id, msg)
+                    start_survey(index, msg)
                 ]);
             }
         }
@@ -49,12 +49,12 @@ async function usersCommands(event)
             global.arr_usr[index].ans = [];
             await Promise.all([
                 callSendAPI(sender_id, "Đang xóa sạch câu trả lời cũ"),
-                start_survey(index, sender_id, msg)
+                start_survey(index, msg)
             ]);
         }
         else if (index)
         {
-            await start_survey(index, sender_id, msg);
+            await start_survey(index, msg);
         }
     }
 }
