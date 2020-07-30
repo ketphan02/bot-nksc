@@ -26,7 +26,7 @@ async function usersCommands(event)
         let index = global.arr_usr.findIndex(x => x.id == sender_id);
         if (msg.toLowerCase() == "[start]" || msg.toLowerCase() == "[bắt đầu]")
         {
-            if (index)
+            if (index >= 0)
             {
                 console.log(index);
                 callSendAPI(sender_id, "Bạn đã sử dụng lệnh này. Dùng lệnh [restart] hoặc [bắt đầu lại] để làm lại");
