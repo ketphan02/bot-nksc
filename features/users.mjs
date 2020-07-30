@@ -6,14 +6,15 @@ export default usersCommands;
 async function start_survey(index, sender_id, msg)
 {
     global.arr_usr[index].ans.push(msg);
+    console.log(global.arr_usr[index]);
     if (global.arr_ques.length === global.arr_usr[index].ans.length)
     {
-        callSendAPI(sender_id, "Cảm ơn bạn vì đã dành thời gian tham gia khảo sát này.");
+        await callSendAPI(sender_id, "Cảm ơn bạn vì đã dành thời gian tham gia khảo sát này.");
     }
     else
     {
         const k = global.arr_usr[index].ans.length;
-        callSendAPI(sender_id, global.arr_ques[k]);
+        await callSendAPI(sender_id, global.arr_ques[k]);
     }
 }
 
@@ -45,7 +46,10 @@ async function usersCommands(event)
         else if (msg.toLowerCase() == "[restart]" || msg.toLowerCase() == "[bắt đầu lại]")
         {
             global.arr_usr[index].ans = [];
-            await callSendAPI(sender_id, "Đang xóa sạch câu trả lời cũ");
+            await Promise.all([
+                callSendAPI(sender_id, "Đang xóa sạch câu trả lời cũ"),
+                start_survey(index, sender_id, msg)
+            ]);
         }
         else if (index)
         {
