@@ -32,7 +32,7 @@ async function usersCommands(event)
                 let tmp = { id: sender_id, ans: [] };
                 global.arr_usr.push(tmp);
                 index = global.arr_usr.find(x => x.id == sender_id);
-                await allSendAPI(sender_id, "Đang bắt đầu...");
+                await callSendAPI(sender_id, "Đang bắt đầu...");
             }
         }
         else if (msg.toLowerCase() == "[restart]" || msg.toLowerCase() == "[bắt đầu lại]")
