@@ -15,7 +15,7 @@ async function start_survey(index, msg)
     else
     {
         console.log("HELLO");
-        const k = global.arr_usr[index].ans.length - 1;
+        const k = global.arr_usr[index].ans.length;
         console.log(k);
         console.log(global.arr_usr[index].id, global.arr_ques[k].textContent);
         await callSendAPI(global.arr_usr[index].id, global.arr_ques[k].textContent);
