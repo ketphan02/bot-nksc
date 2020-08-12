@@ -43,10 +43,9 @@ async function curlURL(link, sender_id)
         let htmlDoc = parser.parseFromString(body, 'text/html');
         let script = htmlDoc.getElementsByClassName("freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont");
         
-        global.questNum = script.length;
         global.isDoing = true;
         
-        for (let i = 0; i < global.questNum; ++ i)
+        for (let i = 0; i < script.length; ++ i)
         {
             callSendAPI(sender_id, script[i].textContent);
             global.arr_ques.push(script[i]);
